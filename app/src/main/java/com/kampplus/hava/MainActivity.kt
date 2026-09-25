@@ -66,11 +66,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
  * title, description ve dış düzen için modifier alır.
  */
 @Composable
-fun ContentCard(
-    title: String,
-    description: String,
-    modifier: Modifier = Modifier
-) {
+fun ContentCard(title: String, description: String, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
@@ -112,8 +108,28 @@ private fun ContentCardLongPreview() {
     HavaTheme {
         ContentCard(
             title = "Haftalık Hava Tahmini Raporu",
-            description = "Önümüzdeki günlerde Marmara bölgesi genelinde yer yer kuvvetli sağanak yağış ve rüzgar beklenmektedir. Sıcaklıklarda 4 ila 6 derece düşüş görülebilir.",
+            description = "Önümüzdeki günlerde Marmara bölgesi genelinde yer yer " +
+                "kuvvetli sağanak yağış ve rüzgar beklenmektedir. " +
+                "Sıcaklıklarda 4 ila 6 derece düşüş görülebilir.",
             modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+// 3. Önizleme: Dar ekran (240dp) ve büyük yazı ölçeği (Erişilebilirlik - %150 font scale)
+@Preview(
+    showBackground = true,
+    name = "Erişilebilirlik ve Dar Ekran",
+    widthDp = 240,
+    fontScale = 1.5f
+)
+@Composable
+private fun ContentCardAccessibilityPreview() {
+    HavaTheme {
+        ContentCard(
+            title = "Ankara",
+            description = "18°C, Parçalı Bulutlu ve Hafif Rüzgarlı",
+            modifier = Modifier.padding(8.dp)
         )
     }
 }
